@@ -1,0 +1,93 @@
+.navbar {
+    color: rgba(57, 91, 100, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    padding: 2rem 2rem;
+    margin-top: 15px;
+    
+}
+
+.nav-links li a{
+    font-size: 1.2rem;
+    color: rgba(57, 91, 100, 1);
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: 400;
+    
+}
+.nav-links li :hover{
+    color: rgb(82, 142, 142);
+}
+.navbar-brand{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 2rem 1.7rem;
+    margin: 10px 0;
+}
+.navbar-title{
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    color: rgba(57, 91, 100, 1);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    background: transparent;
+    text-decoration: none;
+}
+.dropbtn:hover{
+    color: rgb(82, 142, 142);
+}
+
+.dropdown-menu {
+    position: absolute;
+    background-color: rgba(231, 246, 242);
+    margin-top: 2rem;
+    list-style: none;
+    top: 100%;
+    left: -15%;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: opacity 0.5s ease, height 0.5s ease;
+}
+
+.menu-item a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 1rem 0;
+}
+
+.menu-item:hover {
+    cursor: pointer;
+
+}
+
+button:focus~.dropdown-menu {
+    opacity: 1;
+    height: auto;
+}

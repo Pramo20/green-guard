@@ -1,0 +1,40 @@
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    border-radius: 5px;
+    margin: 7px auto;
+    height: 90vh;
+    width: 97.5vw; 
+  }
+  
+  
+  .nav {
+    flex: 1; 
+    background-color: rgba(231, 246, 242, 0.8);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  
+  .content {
+    flex: 5; 
+    background-color: rgba(231, 246, 242, 0.8);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    height: 100%; 
+    min-height: 76vh;
+  }
+  .issue-list{
+    display: flex;
+    flex-direction: column;
+    gap:  10px;
+  
+    
+  }
