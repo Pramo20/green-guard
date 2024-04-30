@@ -1,0 +1,142 @@
+.issue-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 5px;
+    margin: 7px auto;
+    height: 90vh;
+    width: 97.5vw;
+  }
+  
+  .nav {
+    flex: 1; 
+    background-color: rgba(231, 246, 242, 0.8);
+    border-radius: 10px;
+    margin-top: 7px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .content {
+    flex: 5; 
+    border-radius: 10px;
+    align-items: center;
+    background-color: rgba(231, 246, 242, 0.8);
+    justify-content: center;
+  }
+
+.line-one{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 50px;
+}
+.line-two{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 50px;
+}
+.box1{
+    height: 270px;
+    width: 50%;
+    border: 2.5px solid rgba(57, 91, 100, 1) ;
+    border-radius: 20px;
+   
+}
+.box2{
+    width: 50%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(165, 201, 202, 0.7);
+}
+.icon{
+    font-size: 50px;
+    padding-bottom: 10px;
+    color: rgba(57, 91, 100, 1);
+    cursor: pointer;
+}
+
+.box2 span{
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: rgba(57, 91, 100, 1);
+    font-weight: 1px;
+    text-shadow: 1px 1px 2px rgba(57, 91, 100, 0.7);
+}
+.box3{
+    width:70% ;
+    min-height: 270px;
+    border-radius: 20px;
+    background-color: rgba(165, 201, 202, 0.7);
+    display: flex;
+    flex-direction: column;
+
+}
+.box4{
+    width: 35%;
+    height: 270px;
+    border-radius: 20px;
+    background-color: rgba(165, 201, 202, 1);
+    
+}
+.des{
+    font-size: 20px;
+    color: rgba(57, 91, 100, 1);
+    text-shadow: 1px 1px 2px rgba(57, 91, 100, 0.7);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+    padding: 20px 12px 10px 12px;
+    text-align: start;
+    letter-spacing: 3px;
+}
+.box3 textarea{
+    width: 95%;
+    height: 100%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background: transparent;
+    padding: 5px 8px;
+    margin: 5px;
+    font-size: 15px;
+    color: rgba(57, 91, 100, 1);
+
+}
+
+.line-two{
+    display: flex;
+    flex-direction: row;
+}
+.list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 27px;
+    padding: 20px 20px;
+    margin: 0;
+    margin-top: 30px;
+    font-size: 17px;
+    color: rgba(57, 91, 100, 1);
+
+}
+.ip-fields{
+    padding-right: 20px;
+}
+.list input{
+    width: 60%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgba(57, 91, 100, 0.7);
+    background: transparent;
+    color:rgba(57, 91, 100, 1) ;
+    font-size: 15px;
+
+}
