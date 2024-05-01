@@ -59,18 +59,20 @@
 }
 
 .issue-elements {
+  
   flex: 1;
   text-align: left;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 40px;
+  gap: 25px;
   color: rgba(57, 91, 100, 1);
   font-size: large;
+  padding-bottom: 10px;
   
 }
 
-.line-one button{
+.line-onee button{
   position: absolute;
   top: 0px;
   right: 0;
@@ -81,19 +83,23 @@
   font-size: large;
   color: #395b64;
   letter-spacing: 2px;
+  cursor: pointer;
 }
-.line-two{
+.line-onee {
   display: flex;
   flex-direction: row;
-  justify-content: start;
-  gap: 60px;
+  justify-content: space-between;
+  gap: 20px;
+  /* padding: 15px 0px; */
 }
-.line-three{
+.line-twoo{
   display: flex;
   flex-direction: row;
-  justify-content: start;
-  gap: 60px;
+  /* justify-content: space-between; */
+  gap: 70px;
+  padding: 20px 0px;
 }
+
 
 .buttons{
   display: flex;
@@ -109,6 +115,7 @@
   font-size: large;
   color: #395b64;
   letter-spacing: 2px;
+  cursor: pointer;
 
 }
 .resolve-button{

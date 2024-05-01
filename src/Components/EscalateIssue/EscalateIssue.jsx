@@ -1,7 +1,5 @@
 import React from 'react'
-import './Issues.css'
 import NavBar from '../MainPage/NavBar'
-
 
 const issues=[
   {
@@ -39,10 +37,6 @@ const issues=[
 
   ]
 
-  function handleCopy(){
-    console.log('copied');
-  }
-
 function Image({issues}){ 
   return(
     <img src={issues.img_src} alt='issue' className='issue-img' style={{'width':'330px', 'height': '170px' ,'border-radius': '10px' , 'border':' 3px solid rgba(57, 91, 100, 1)'}}/>
@@ -53,7 +47,7 @@ function Issue({issue}){
     <div className='issue'>
       <div className='image-box'><Image issues={issue}/></div>
       <div className='issue-elements'>
-        <div className='line-onee'><span>ISSUE TYPE : _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _  {issue.type}</span><button onClick={handleCopy} >COPY</ button></div>
+        <div className='line-onee'><span>ISSUE TYPE : _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _  {issue.type}</span></div>
         <div className='line-twoo'><span>ISSUE FROM : _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _   {issue.from}</span><span className='date'>  DATE OF ISSUE : _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ {issue.date}</span></div>
         <div className='line-three'><span className='location'> LOCATION : _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _   {issue.location}</span><div className='buttons'><button className='spam-button'>Mark as Spam</ button><button className='resolve-button'>Issue Resolved</ button></div></div>
         
@@ -79,7 +73,7 @@ function IssueList({issues}){
     
   )
 }
-function Issues() {
+function EscalateIssue() {
   return (
     <div className='issue-container'>
      <div className='nav'> <NavBar/></div>
@@ -91,4 +85,4 @@ function Issues() {
   )
 }
 
-export default Issues;
+export default EscalateIssue;

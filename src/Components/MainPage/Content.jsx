@@ -6,7 +6,18 @@ export default function Content() {
   const numberOfIssuesSolved = 5;
   return (
     <div className='container'>
-      <div className='map'>The map comes here</div>
+      <div classname="map">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d250558.01494918446!2d77.00109328775638!3d11.115687936524239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1714577891917!5m2!1sen!2sin"
+    width={1300}
+    height={350}
+    style={{ border: '0', borderRadius: '10px', borderColor: '#395b64' }}
+    allowFullScreen=""
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  />
+</div>
+
       <div className='issue_report'>
       <div className='issue1'><h1>ISSUES REPORTED</h1>
       <br />

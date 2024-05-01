@@ -5,6 +5,7 @@ import Main from './Components/MainPage/Main';
 import Issues from './Components/Issues/Issues';
 import ReportSubmit from './Components/ReportSubmit/ReportSubmit';
 import Setting from './Components/Settings/Setting';
+import EscalateIssue from './Components/EscalateIssue/EscalateIssue';
 function App() {
   return (
     <Router>
@@ -14,6 +15,8 @@ function App() {
         <Route path="/issues" element ={<div><Issues/></div>}/>
         <Route path="/report-submit" element={<div><ReportSubmit/></div>}/>
         <Route path="/settings" element={<div><Setting/></div>}/>
+        <Route path="/escalated" element={<div><EscalateIssue/></div>}/>
+        
 
       </Routes>
     </Router>

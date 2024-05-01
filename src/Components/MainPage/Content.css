@@ -10,15 +10,6 @@
     
         
 }
-.map{
-    background-color: white;
-    height: 350px;
-    width: 1300px;
-    border-radius: 10px;
-    text-align: center;
-    border: 3px solid black;
-
-}
 .issue_report{
     display: flex;
     flex-direction: row;
