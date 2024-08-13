@@ -8,8 +8,13 @@ function NavBar() {
   return (
     <nav className='navbar'>
       <div className='navbar-brand'>
-        <img src={require('../Assets/Leaf.png')} className='navbar-icon' alt='Logo' />
+      <a href='/home'>
+          <img src={require('../Assets/Leaf.png')} className='navbar-icon' alt='Logo' />
+          
+        </a>
         <h1 className='navbar-title'>Green Guard</h1>
+        
+
       </div>
       <ul className='nav-links'>
         <li><NavLink exact to='/home' activeClassName='active'>HOME</NavLink></li>
