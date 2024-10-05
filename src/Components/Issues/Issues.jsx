@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Issues.css";
 import NavBar from "../MainPage/NavBar";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
 const issues = [
   {
@@ -283,6 +285,16 @@ function Issues() {
       <div className="nav">
         <NavBar />
       </div>
+      {/* <div className="filter-option">
+        <Dropdown
+          options={[
+            "Date",
+            "Location",
+          ]}
+          value="All"
+          placeholder="Filter by"
+        />
+      </div> */}
       <div className="content">
         <IssueList issues={currentIssues} />
         <Pagination
