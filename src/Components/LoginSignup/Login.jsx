@@ -4,7 +4,7 @@ import "./Login.css";
 import * as localStorage from "local-storage";
 import axios from "axios";
 
-const BASE_URL = "https://greenguard.onrender.com";
+const BASE_URL = "http://localhost:5000";
 
 export const LoginSignup = () => {
   const [username, setUsername] = useState("");

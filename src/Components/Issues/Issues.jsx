@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Issues.css";
 import NavBar from "../MainPage/NavBar";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
+
+import axios from "axios";
 
 const issues = [
   {
@@ -47,7 +49,7 @@ const issues = [
     location: "Thudiyalur",
     date: "5 October 2024",
     img_src:
-    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 5,
@@ -58,7 +60,7 @@ const issues = [
     location: "Tidel Park",
     date: "3 October 2024",
     img_src:
-    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 6,
@@ -69,7 +71,7 @@ const issues = [
     location: "Singanallur",
     date: "1 October 2024",
     img_src:
-    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 7,
@@ -80,7 +82,7 @@ const issues = [
     location: "Peelamedu",
     date: "25 September 2024",
     img_src:
-    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 8,
@@ -91,7 +93,7 @@ const issues = [
     location: "Coimbatore Main Road",
     date: "28 September 2024",
     img_src:
-    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 9,
@@ -102,7 +104,7 @@ const issues = [
     location: "Kumarasamy Layout",
     date: "2 October 2024",
     img_src:
-    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 10,
@@ -113,7 +115,7 @@ const issues = [
     location: "Nehru Stadium",
     date: "1 October 2024",
     img_src:
-    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 11,
@@ -123,7 +125,7 @@ const issues = [
     from: "Sneha P",
     location: "Ram Nagar",
     date: "3 October 2024",
-     img_src:
+    img_src:
       "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
@@ -134,7 +136,7 @@ const issues = [
     from: "Rahul T",
     location: "Chettipalayam",
     date: "29 September 2024",
-     img_src:
+    img_src:
       "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
@@ -145,7 +147,7 @@ const issues = [
     from: "Priya N",
     location: "Kalapatti",
     date: "30 September 2024",
-     img_src:
+    img_src:
       "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
@@ -156,7 +158,7 @@ const issues = [
     from: "Karthik J",
     location: "Town Hall",
     date: "4 October 2024",
-     img_src:
+    img_src:
       "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
@@ -167,7 +169,7 @@ const issues = [
     from: "Ananya R",
     location: "Race Course",
     date: "5 October 2024",
-     img_src:
+    img_src:
       "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
 ];
@@ -175,6 +177,23 @@ const issues = [
 function Pagination({ totalPages, currentPage, onPageChange }) {
   // ... (your existing Pagination component code)
 }
+
+const apicall = async () => {
+  const BASE_URL = "https://greenguard.onrender.com";
+  console.log(localStorage.getItem("authToken"));
+  const token = localStorage.getItem("authToken");
+  const tokenWithoutQuotes = token.replace(/^"|"$/g, "");
+  console.log(tokenWithoutQuotes);
+  try {
+    const response = await axios.get(BASE_URL + "/issues/all", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${tokenWithoutQuotes}`,
+      },
+    });
+    console.log(response.data);
+  } catch (error) {}
+};
 
 function handleCopy() {
   console.log("copied");
@@ -223,7 +242,6 @@ function Issue({ issue }) {
   );
 }
 
-
 function IssueList({ issues }) {
   if (issues.length === 0) {
     return (
@@ -237,7 +255,7 @@ function IssueList({ issues }) {
       >
         No issues found based on the filter criteria.
       </div>
-    ); // D 
+    ); // D
   }
   return (
     <div>
@@ -275,15 +293,21 @@ function Issues() {
 
     const filtered = issues.filter((issue) => {
       return (
-        (location === "" || issue.location.toLowerCase().includes(location.toLowerCase())) &&
+        (location === "" ||
+          issue.location.toLowerCase().includes(location.toLowerCase())) &&
         (date === "" || issue.date.includes(date))
       );
     });
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
 
     setFilteredIssues(filtered);
     setCurrentPage(1);
   };
 
+  useEffect(() => {
+    apicall();
+  }, []);
   const options = [
     { value: "location", label: "Search by Location" },
     { value: "date", label: "Search by Date" },
