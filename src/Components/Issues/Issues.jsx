@@ -47,7 +47,7 @@ const issues = [
     location: "Thudiyalur",
     date: "5 October 2024",
     img_src:
-      "https://cdn.pixabay.com/photo/2016/11/29/05/10/lights-1867740__480.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 5,
@@ -58,7 +58,7 @@ const issues = [
     location: "Tidel Park",
     date: "3 October 2024",
     img_src:
-      "https://cdn.pixabay.com/photo/2016/03/27/14/23/flood-1281385__480.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 6,
@@ -69,7 +69,7 @@ const issues = [
     location: "Singanallur",
     date: "1 October 2024",
     img_src:
-      "https://cdn.pixabay.com/photo/2017/03/21/15/27/potholes-2150426__480.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 7,
@@ -80,7 +80,7 @@ const issues = [
     location: "Peelamedu",
     date: "25 September 2024",
     img_src:
-      "https://cdn.pixabay.com/photo/2018/01/14/14/30/dump-3087763__480.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 8,
@@ -91,7 +91,7 @@ const issues = [
     location: "Coimbatore Main Road",
     date: "28 September 2024",
     img_src:
-      "https://cdn.pixabay.com/photo/2015/09/21/15/53/path-557679__480.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 9,
@@ -102,7 +102,7 @@ const issues = [
     location: "Kumarasamy Layout",
     date: "2 October 2024",
     img_src:
-      "https://cdn.pixabay.com/photo/2016/10/20/19/31/park-985422__480.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 10,
@@ -113,7 +113,7 @@ const issues = [
     location: "Nehru Stadium",
     date: "1 October 2024",
     img_src:
-      "https://cdn.pixabay.com/photo/2015/09/04/20/28/traffic-952870__480.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 11,
@@ -123,8 +123,8 @@ const issues = [
     from: "Sneha P",
     location: "Ram Nagar",
     date: "3 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2017/11/18/09/45/dog-2959928__480.jpg",
+     img_src:
+      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 12,
@@ -134,8 +134,8 @@ const issues = [
     from: "Rahul T",
     location: "Chettipalayam",
     date: "29 September 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2016/01/19/17/34/graffiti-1149993__480.jpg",
+     img_src:
+      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 13,
@@ -145,8 +145,8 @@ const issues = [
     from: "Priya N",
     location: "Kalapatti",
     date: "30 September 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2016/12/27/10/02/street-lights-1944710__480.jpg",
+     img_src:
+      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 14,
@@ -156,8 +156,8 @@ const issues = [
     from: "Karthik J",
     location: "Town Hall",
     date: "4 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2016/03/27/14/21/bus-1281382__480.jpg",
+     img_src:
+      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
   {
     id: 15,
@@ -167,47 +167,13 @@ const issues = [
     from: "Ananya R",
     location: "Race Course",
     date: "5 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2016/08/23/19/54/under-construction-1613930__480.jpg",
+     img_src:
+      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
   },
 ];
 
 function Pagination({ totalPages, currentPage, onPageChange }) {
-  const buttonStyle = {
-    padding: "5px 10px",
-    margin: "0 5px",
-    borderRadius: "5px",
-    border: "1px solid #ccc",
-    backgroundColor: "#f0f0f0",
-    cursor: "pointer",
-    outline: "none",
-    fontSize: "16px",
-  };
-
-  const activeStyle = {
-    backgroundColor: "#007bff",
-    color: "#fff",
-    borderColor: "#007bff",
-  };
-
-  return (
-    <div className="pagination">
-      {Array.from({ length: totalPages }).map((_, index) => (
-        <button
-          style={
-            currentPage === index + 1
-              ? { ...buttonStyle, ...activeStyle }
-              : buttonStyle
-          }
-          key={index}
-          className={currentPage === index + 1 ? "active" : ""}
-          onClick={() => onPageChange(index + 1)}
-        >
-          {index + 1}
-        </button>
-      ))}
-    </div>
-  );
+  // ... (your existing Pagination component code)
 }
 
 function handleCopy() {
@@ -257,7 +223,22 @@ function Issue({ issue }) {
   );
 }
 
+
 function IssueList({ issues }) {
+  if (issues.length === 0) {
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          color: "rgba(57, 91, 100, 1)", // Your desired color
+          fontSize: "18px",
+          margin: "20px 0",
+        }}
+      >
+        No issues found based on the filter criteria.
+      </div>
+    ); // D 
+  }
   return (
     <div>
       <section className="issue-list">
@@ -273,28 +254,90 @@ function IssueList({ issues }) {
 
 function Issues() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [filteredIssues, setFilteredIssues] = useState(issues);
+  const [filterVisible, setFilterVisible] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState(null); // State to track selected filter option
+  const [filter, setFilter] = useState({ location: "", date: "" });
   const issuesPerPage = 5;
-  const totalPages = Math.ceil(issues.length / issuesPerPage);
-  const currentIssues = issues.slice(
+  const totalPages = Math.ceil(filteredIssues.length / issuesPerPage);
+  const currentIssues = filteredIssues.slice(
     (currentPage - 1) * issuesPerPage,
     currentPage * issuesPerPage
   );
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilter((prevFilter) => ({ ...prevFilter, [name]: value }));
+  };
+
+  const applyFilter = () => {
+    const { location, date } = filter;
+
+    const filtered = issues.filter((issue) => {
+      return (
+        (location === "" || issue.location.toLowerCase().includes(location.toLowerCase())) &&
+        (date === "" || issue.date.includes(date))
+      );
+    });
+
+    setFilteredIssues(filtered);
+    setCurrentPage(1);
+  };
+
+  const options = [
+    { value: "location", label: "Search by Location" },
+    { value: "date", label: "Search by Date" },
+  ];
 
   return (
     <div className="issue-container">
       <div className="nav">
         <NavBar />
       </div>
-      {/* <div className="filter-option">
+
+      <div className="filter-section">
         <Dropdown
-          options={[
-            "Date",
-            "Location",
-          ]}
-          value="All"
-          placeholder="Filter by"
+          options={options}
+          onChange={(option) => {
+            setSelectedFilter(option);
+            setFilter({ location: "", date: "" }); // Reset filters when changing the dropdown
+          }}
+          placeholder="Select a filter"
         />
-      </div> */}
+
+        {selectedFilter && (
+          <div className="filter-inputs">
+            {selectedFilter.value === "location" && (
+              <>
+                <input
+                  type="text"
+                  name="location"
+                  placeholder="Enter Location"
+                  value={filter.location}
+                  onChange={handleFilterChange}
+                  className="filter-input"
+                />
+              </>
+            )}
+            {selectedFilter.value === "date" && (
+              <>
+                <input
+                  type="text"
+                  name="date"
+                  placeholder="Enter Date (e.g., 2 October 2024)"
+                  value={filter.date}
+                  onChange={handleFilterChange}
+                  className="filter-input"
+                />
+              </>
+            )}
+            <button className="apply-filter-button" onClick={applyFilter}>
+              Apply Filter
+            </button>
+          </div>
+        )}
+      </div>
+
       <div className="content">
         <IssueList issues={currentIssues} />
         <Pagination

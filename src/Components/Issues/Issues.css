@@ -1,7 +1,7 @@
 .issue-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0px;
   border-radius: 5px;
   margin: 7px auto;
   height: 90vh;
@@ -90,12 +90,12 @@
   flex-direction: row;
   justify-content: space-between;
   gap: 20px;
-  /* padding: 15px 0px; */
+
 }
 .line-twoo{
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
+
   gap: 70px;
   padding: 20px 0px;
 }
@@ -129,4 +129,58 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
+}
+.filter-section {
+  margin: 10px 0;
+  width: 30%;
+  text-align: center;
+}
+
+.filter-toggle-button {
+  font-size: large;
+  background-color: rgba(231, 246, 242 );
+  color:  #395b64;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.filter-toggle-button:hover {
+  background-color: rgba(211, 226, 222, 1);
+}
+
+.filter-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  /* margin-bottom: 0px; */
+  width: 100%;
+  position: relative;
+  top: -37px;
+  align-self: center;
+  justify-content: center;
+  left: 110%;
+}
+
+.filter-input {
+  padding: 8px;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.apply-filter-button {
+  padding: 8px 15px;
+  background-color: rgba(47, 81, 90, 1);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.apply-filter-button:hover {
+border: solid rgba(47, 81, 90, 1);
 }
