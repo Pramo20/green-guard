@@ -178,23 +178,6 @@ function Pagination({ totalPages, currentPage, onPageChange }) {
   // ... (your existing Pagination component code)
 }
 
-const apicall = async () => {
-  const BASE_URL = "https://greenguard.onrender.com";
-  console.log(localStorage.getItem("authToken"));
-  const token = localStorage.getItem("authToken");
-  const tokenWithoutQuotes = token.replace(/^"|"$/g, "");
-  console.log(tokenWithoutQuotes);
-  try {
-    const response = await axios.get(BASE_URL + "/issues/all", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${tokenWithoutQuotes}`,
-      },
-    });
-    console.log(response.data);
-  } catch (error) {}
-};
-
 function handleCopy() {
   console.log("copied");
 }
@@ -202,7 +185,7 @@ function handleCopy() {
 function Image({ issues }) {
   return (
     <img
-      src={issues.img_src}
+      src={issues.IssueImage}
       alt="issue"
       className="issue-img"
       style={{
@@ -223,15 +206,15 @@ function Issue({ issue }) {
       </div>
       <div className="issue-elements">
         <div className="line-onee">
-          <span>ISSUE TYPE : {issue.type}</span>
+          <span>ISSUE TYPE : {issue.IssueType}</span>
           <button onClick={handleCopy}>COPY</button>
         </div>
         <div className="line-twoo">
-          <span>ISSUE FROM : {issue.from}</span>
-          <span className="date"> DATE OF ISSUE : {issue.date}</span>
+          <span>ISSUE FROM : {issue._id}</span>
+          <span className="date"> DATE OF ISSUE : {issue.createdAt}</span>
         </div>
         <div className="line-three">
-          <span className="location"> LOCATION : {issue.location}</span>
+          <span className="location"> LOCATION : {issue.IssueLocation}</span>
           <div className="buttons">
             <button className="spam-button">Mark as Spam</button>
             <button className="resolve-button">Issue Resolved</button>
@@ -272,6 +255,7 @@ function IssueList({ issues }) {
 
 function Issues() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [Data, setData] = useState([]);
   const [filteredIssues, setFilteredIssues] = useState(issues);
   const [filterVisible, setFilterVisible] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState(null); // State to track selected filter option
@@ -303,6 +287,26 @@ function Issues() {
 
     setFilteredIssues(filtered);
     setCurrentPage(1);
+  };
+  const apicall = async () => {
+    const BASE_URL = "https://greenguard.onrender.com";
+    console.log(localStorage.getItem("authToken"));
+    const token = localStorage.getItem("authToken");
+    const tokenWithoutQuotes = token.replace(/^"|"$/g, "");
+    console.log(tokenWithoutQuotes);
+    try {
+      const response = await axios.get(BASE_URL + "/issues/all", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${tokenWithoutQuotes}`,
+        },
+      });
+      console.log(response.data);
+      setData(response.data);
+    } catch (error) {
+      console.log(error);
+      window.alert("Error in fetching issues. Please try again later.");
+    }
   };
 
   useEffect(() => {
@@ -363,7 +367,7 @@ function Issues() {
       </div>
 
       <div className="content">
-        <IssueList issues={currentIssues} />
+        <IssueList issues={Data} />
         <Pagination
           totalPages={totalPages}
           currentPage={currentPage}
