@@ -41,7 +41,7 @@ export const LoginSignup = () => {
         headers: { "Content-Type": "application/json" },
       });
       console.log(response.data);
-      await localStorage.set("login-credentials", body);
+      await localStorage.set("authToken", response.data.token);
       navigate("/home");
     } catch (error) {
       console.log(error);
