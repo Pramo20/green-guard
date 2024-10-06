@@ -18,6 +18,7 @@
 }
 
 .content {
+  margin-top: 10px;
   flex: 5; 
   border-radius: 10px;
   align-items: center;
@@ -131,9 +132,10 @@
   margin-top: 20px;
 }
 .filter-section {
-  margin: 10px 0;
+  margin: 10px 8px;
   width: 30%;
   text-align: center;
+
 }
 
 .filter-toggle-button {

@@ -179,46 +179,46 @@ function Issues() {
         <NavBar />
       </div>
 
-      <div className="filter-section">
-        <Dropdown
-          options={options}
-          onChange={(option) => {
-            setSelectedFilter(option);
-            setFilter({ location: "", date: "" });
-          }}
-          placeholder="Select a filter"
-        />
-
-        {selectedFilter && (
-          <div className="filter-inputs">
-            {selectedFilter.value === "location" && (
-              <input
-                type="text"
-                name="location"
-                placeholder="Enter Location"
-                value={filter.location}
-                onChange={handleFilterChange}
-                className="filter-input"
-              />
-            )}
-            {selectedFilter.value === "date" && (
-              <input
-                type="text"
-                name="date"
-                placeholder="Enter Date (e.g., 2 October 2024)"
-                value={filter.date}
-                onChange={handleFilterChange}
-                className="filter-input"
-              />
-            )}
-            <button className="apply-filter-button" onClick={applyFilter}>
-              Apply Filter
-            </button>
-          </div>
-        )}
-      </div>
-
       <div className="content">
+        <div className="filter-section">
+          <Dropdown
+            options={options}
+            onChange={(option) => {
+              setSelectedFilter(option);
+              setFilter({ location: "", date: "" });
+            }}
+            placeholder="Select a filter"
+          />
+
+          {selectedFilter && (
+            <div className="filter-inputs">
+              {selectedFilter.value === "location" && (
+                <input
+                  type="text"
+                  name="location"
+                  placeholder="Enter Location"
+                  value={filter.location}
+                  onChange={handleFilterChange}
+                  className="filter-input"
+                />
+              )}
+              {selectedFilter.value === "date" && (
+                <input
+                  type="text"
+                  name="date"
+                  placeholder="Enter Date (e.g., 2 October 2024)"
+                  value={filter.date}
+                  onChange={handleFilterChange}
+                  className="filter-input"
+                />
+              )}
+              <button className="apply-filter-button" onClick={applyFilter}>
+                Apply Filter
+              </button>
+            </div>
+          )}
+        </div>
+
         <IssueList issues={currentIssues} />
         <Pagination
           totalPages={totalPages}
