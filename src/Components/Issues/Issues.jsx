@@ -6,178 +6,50 @@ import "react-dropdown/style.css";
 
 import axios from "axios";
 
-const issues = [
-  {
-    id: 1,
-    title: "Issue 1",
-    description: "This is the first issue",
-    type: "Garbage",
-    from: "Pramodini P",
-    location: "Gandhipuram",
-    date: "29 September 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 2,
-    title: "Issue 2",
-    description: "This is the second issue",
-    type: "Garbage",
-    from: "Abinav P",
-    location: "Peelamedu",
-    date: "2 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 3,
-    title: "Issue 3",
-    description: "This is the third issue",
-    type: "Garbage",
-    from: "Manoranjan",
-    location: "RS Puram",
-    date: "24 August 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 4,
-    title: "Issue 4",
-    description: "Broken streetlight reported in the area.",
-    type: "Infrastructure",
-    from: "Kavya S",
-    location: "Thudiyalur",
-    date: "5 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 5,
-    title: "Issue 5",
-    description: "Water logging due to heavy rain.",
-    type: "Flooding",
-    from: "Ravi K",
-    location: "Tidel Park",
-    date: "3 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 6,
-    title: "Issue 6",
-    description: "Potholes on the main road causing inconvenience.",
-    type: "Road",
-    from: "Neha R",
-    location: "Singanallur",
-    date: "1 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 7,
-    title: "Issue 7",
-    description: "Illegal dumping of waste at the corner.",
-    type: "Garbage",
-    from: "Ravi G",
-    location: "Peelamedu",
-    date: "25 September 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 8,
-    title: "Issue 8",
-    description: "Damaged footpath posing risk to pedestrians.",
-    type: "Infrastructure",
-    from: "Arjun V",
-    location: "Coimbatore Main Road",
-    date: "28 September 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 9,
-    title: "Issue 9",
-    description: "Unhygienic conditions near the park.",
-    type: "Health",
-    from: "Sanjana M",
-    location: "Kumarasamy Layout",
-    date: "2 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 10,
-    title: "Issue 10",
-    description: "Traffic congestion during peak hours.",
-    type: "Traffic",
-    from: "Vikram S",
-    location: "Nehru Stadium",
-    date: "1 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 11,
-    title: "Issue 11",
-    description: "Street dogs causing disturbance at night.",
-    type: "Animals",
-    from: "Sneha P",
-    location: "Ram Nagar",
-    date: "3 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 12,
-    title: "Issue 12",
-    description: "Graffiti and vandalism in public areas.",
-    type: "Vandalism",
-    from: "Rahul T",
-    location: "Chettipalayam",
-    date: "29 September 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 13,
-    title: "Issue 13",
-    description: "Need for more streetlights in dark areas.",
-    type: "Infrastructure",
-    from: "Priya N",
-    location: "Kalapatti",
-    date: "30 September 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 14,
-    title: "Issue 14",
-    description: "Issues with public transportation timings.",
-    type: "Transport",
-    from: "Karthik J",
-    location: "Town Hall",
-    date: "4 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 15,
-    title: "Issue 15",
-    description: "Excessive noise from construction sites.",
-    type: "Noise",
-    from: "Ananya R",
-    location: "Race Course",
-    date: "5 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-];
-
 function Pagination({ totalPages, currentPage, onPageChange }) {
-  // ... (your existing Pagination component code)
-}
+  const buttonStyle = {
+    padding: "5px 10px",
+    margin: "0 5px",
+    borderRadius: "5px",
+    border: "1px solid #ccc",
+    backgroundColor: "#f0f0f0",
+    cursor: "pointer",
+    outline: "none",
+    fontSize: "16px",
+  };
 
+  const activeStyle = {
+    backgroundColor: "#007bff",
+    color: "#fff",
+    borderColor: "#007bff",
+  };
+
+  return (
+    <div className="pagination">
+      {" "}
+      {Array.from({
+        length: totalPages,
+      }).map((_, index) => (
+        <button
+          style={
+            currentPage === index + 1
+              ? {
+                  ...buttonStyle,
+                  ...activeStyle,
+                }
+              : buttonStyle
+          }
+          key={index}
+          className={currentPage === index + 1 ? "active" : ""}
+          onClick={() => onPageChange(index + 1)}
+        >
+          {" "}
+          {index + 1}
+        </button>
+      ))}
+    </div>
+  );
+}
 function handleCopy() {
   console.log("copied");
 }
