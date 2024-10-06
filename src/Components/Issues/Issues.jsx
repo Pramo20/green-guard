@@ -3,7 +3,6 @@ import "./Issues.css";
 import NavBar from "../MainPage/NavBar";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-
 import axios from "axios";
 
 function Pagination({ totalPages, currentPage, onPageChange }) {
@@ -26,38 +25,27 @@ function Pagination({ totalPages, currentPage, onPageChange }) {
 
   return (
     <div className="pagination">
-      {" "}
-      {Array.from({
-        length: totalPages,
-      }).map((_, index) => (
+      {Array.from({ length: totalPages }).map((_, index) => (
         <button
           style={
             currentPage === index + 1
-              ? {
-                  ...buttonStyle,
-                  ...activeStyle,
-                }
+              ? { ...buttonStyle, ...activeStyle }
               : buttonStyle
           }
           key={index}
-          className={currentPage === index + 1 ? "active" : ""}
           onClick={() => onPageChange(index + 1)}
         >
-          {" "}
           {index + 1}
         </button>
       ))}
     </div>
   );
 }
-function handleCopy() {
-  console.log("copied");
-}
 
-function Image({ issues }) {
+function Image({ issue }) {
   return (
     <img
-      src={issues.IssueImage}
+      src={issue.IssueImage}
       alt="issue"
       className="issue-img"
       style={{
@@ -74,19 +62,21 @@ function Issue({ issue }) {
   return (
     <div className="issue">
       <div className="image-box">
-        <Image issues={issue} />
+        <Image issue={issue} />
       </div>
       <div className="issue-elements">
         <div className="line-onee">
-          <span>ISSUE TYPE : {issue.IssueType}</span>
-          <button onClick={handleCopy}>COPY</button>
+          <span>ISSUE TYPE: {issue.IssueType}</span>
+          <button onClick={() => navigator.clipboard.writeText(issue._id)}>
+            COPY
+          </button>
         </div>
         <div className="line-twoo">
-          <span>ISSUE FROM : {issue._id}</span>
-          <span className="date"> DATE OF ISSUE : {issue.createdAt}</span>
+          <span>ISSUE FROM: {issue._id}</span>
+          <span className="date"> DATE OF ISSUE: {issue.createdAt}</span>
         </div>
         <div className="line-three">
-          <span className="location"> LOCATION : {issue.IssueLocation}</span>
+          <span className="location">LOCATION: {issue.IssueLocation}</span>
           <div className="buttons">
             <button className="spam-button">Mark as Spam</button>
             <button className="resolve-button">Issue Resolved</button>
@@ -103,20 +93,20 @@ function IssueList({ issues }) {
       <div
         style={{
           textAlign: "center",
-          color: "rgba(57, 91, 100, 1)", // Your desired color
+          color: "rgba(57, 91, 100, 1)",
           fontSize: "18px",
           margin: "20px 0",
         }}
       >
         No issues found based on the filter criteria.
       </div>
-    ); // D
+    );
   }
   return (
     <div>
       <section className="issue-list">
         {issues.map((issue) => (
-          <li className="issue-item" key={issue.id}>
+          <li className="issue-item" key={issue._id}>
             <Issue issue={issue} />
           </li>
         ))}
@@ -128,11 +118,11 @@ function IssueList({ issues }) {
 function Issues() {
   const [currentPage, setCurrentPage] = useState(1);
   const [Data, setData] = useState([]);
-  const [filteredIssues, setFilteredIssues] = useState(issues);
-  const [filterVisible, setFilterVisible] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState(null); // State to track selected filter option
+  const [filteredIssues, setFilteredIssues] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState(null);
   const [filter, setFilter] = useState({ location: "", date: "" });
   const issuesPerPage = 5;
+
   const totalPages = Math.ceil(filteredIssues.length / issuesPerPage);
   const currentIssues = filteredIssues.slice(
     (currentPage - 1) * issuesPerPage,
@@ -146,37 +136,30 @@ function Issues() {
 
   const applyFilter = () => {
     const { location, date } = filter;
-
-    const filtered = issues.filter((issue) => {
+    const filtered = Data.filter((issue) => {
       return (
         (location === "" ||
-          issue.location.toLowerCase().includes(location.toLowerCase())) &&
-        (date === "" || issue.date.includes(date))
+          issue.IssueLocation.toLowerCase().includes(location.toLowerCase())) &&
+        (date === "" || issue.createdAt.includes(date))
       );
     });
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-
     setFilteredIssues(filtered);
     setCurrentPage(1);
   };
+
   const apicall = async () => {
     const BASE_URL = "https://greenguard.onrender.com";
-    console.log(localStorage.getItem("authToken"));
     const token = localStorage.getItem("authToken");
     const tokenWithoutQuotes = token.replace(/^"|"$/g, "");
-    console.log(tokenWithoutQuotes);
     try {
       const response = await axios.get(BASE_URL + "/issues/all", {
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${tokenWithoutQuotes}`,
         },
       });
-      console.log(response.data);
       setData(response.data);
+      setFilteredIssues(response.data);
     } catch (error) {
-      console.log(error);
       window.alert("Error in fetching issues. Please try again later.");
     }
   };
@@ -184,6 +167,7 @@ function Issues() {
   useEffect(() => {
     apicall();
   }, []);
+
   const options = [
     { value: "location", label: "Search by Location" },
     { value: "date", label: "Search by Date" },
@@ -200,7 +184,7 @@ function Issues() {
           options={options}
           onChange={(option) => {
             setSelectedFilter(option);
-            setFilter({ location: "", date: "" }); // Reset filters when changing the dropdown
+            setFilter({ location: "", date: "" });
           }}
           placeholder="Select a filter"
         />
@@ -208,28 +192,24 @@ function Issues() {
         {selectedFilter && (
           <div className="filter-inputs">
             {selectedFilter.value === "location" && (
-              <>
-                <input
-                  type="text"
-                  name="location"
-                  placeholder="Enter Location"
-                  value={filter.location}
-                  onChange={handleFilterChange}
-                  className="filter-input"
-                />
-              </>
+              <input
+                type="text"
+                name="location"
+                placeholder="Enter Location"
+                value={filter.location}
+                onChange={handleFilterChange}
+                className="filter-input"
+              />
             )}
             {selectedFilter.value === "date" && (
-              <>
-                <input
-                  type="text"
-                  name="date"
-                  placeholder="Enter Date (e.g., 2 October 2024)"
-                  value={filter.date}
-                  onChange={handleFilterChange}
-                  className="filter-input"
-                />
-              </>
+              <input
+                type="text"
+                name="date"
+                placeholder="Enter Date (e.g., 2 October 2024)"
+                value={filter.date}
+                onChange={handleFilterChange}
+                className="filter-input"
+              />
             )}
             <button className="apply-filter-button" onClick={applyFilter}>
               Apply Filter
@@ -239,7 +219,7 @@ function Issues() {
       </div>
 
       <div className="content">
-        <IssueList issues={Data} />
+        <IssueList issues={currentIssues} />
         <Pagination
           totalPages={totalPages}
           currentPage={currentPage}
