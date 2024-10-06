@@ -150,9 +150,13 @@ function Issues() {
   const apicall = async () => {
     const BASE_URL = "https://greenguard.onrender.com";
     const token = localStorage.getItem("authToken");
+    if (!token) {
+      window.alert("Authentication token not found. Please login.");
+      return;
+    }
     const tokenWithoutQuotes = token.replace(/^"|"$/g, "");
     try {
-      const response = await axios.get(BASE_URL + "/issues/all", {
+      const response = await axios.get(`${BASE_URL}/issues/all`, {
         headers: {
           Authorization: `Bearer ${tokenWithoutQuotes}`,
         },
@@ -160,6 +164,7 @@ function Issues() {
       setData(response.data);
       setFilteredIssues(response.data);
     } catch (error) {
+      console.error("Error fetching issues:", error);
       window.alert("Error in fetching issues. Please try again later.");
     }
   };

@@ -46,7 +46,7 @@
     border-radius: 20px;
    
 }
-.box2{
+.box2 {
     width: 50%;
     border-radius: 20px;
     display: flex;
@@ -54,12 +54,29 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(165, 201, 202, 0.7);
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
-.icon{
+
+.box2:hover {
+    background-color: rgba(145, 181, 182, 0.9);
+}
+
+.icon {
     font-size: 50px;
-    padding-bottom: 10px;
+    padding-left: 40px;
     color: rgba(57, 91, 100, 1);
     cursor: pointer;
+
+}
+
+.box2 span {
+    font-size: 18px;
+    display: flex;
+    padding-top: 10px;
+
+    color: rgba(57, 91, 100, 1);
 }
 
 .box2 span{
