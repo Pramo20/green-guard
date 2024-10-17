@@ -3,185 +3,47 @@ import "./Escalate.css";
 import NavBar from "../MainPage/NavBar";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-
 import axios from "axios";
 
-const issues = [
-  {
-    id: 1,
-    title: "Issue 1",
-    description: "This is the first issue",
-    type: "Garbage",
-    from: "Pramodini P",
-    location: "Gandhipuram",
-    date: "29 September 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 2,
-    title: "Issue 2",
-    description: "This is the second issue",
-    type: "Garbage",
-    from: "Abinav P",
-    location: "Peelamedu",
-    date: "2 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 3,
-    title: "Issue 3",
-    description: "This is the third issue",
-    type: "Garbage",
-    from: "Manoranjan",
-    location: "RS Puram",
-    date: "24 August 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 4,
-    title: "Issue 4",
-    description: "Broken streetlight reported in the area.",
-    type: "Infrastructure",
-    from: "Kavya S",
-    location: "Thudiyalur",
-    date: "5 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 5,
-    title: "Issue 5",
-    description: "Water logging due to heavy rain.",
-    type: "Flooding",
-    from: "Ravi K",
-    location: "Tidel Park",
-    date: "3 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 6,
-    title: "Issue 6",
-    description: "Potholes on the main road causing inconvenience.",
-    type: "Road",
-    from: "Neha R",
-    location: "Singanallur",
-    date: "1 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 7,
-    title: "Issue 7",
-    description: "Illegal dumping of waste at the corner.",
-    type: "Garbage",
-    from: "Ravi G",
-    location: "Peelamedu",
-    date: "25 September 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 8,
-    title: "Issue 8",
-    description: "Damaged footpath posing risk to pedestrians.",
-    type: "Infrastructure",
-    from: "Arjun V",
-    location: "Coimbatore Main Road",
-    date: "28 September 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 9,
-    title: "Issue 9",
-    description: "Unhygienic conditions near the park.",
-    type: "Health",
-    from: "Sanjana M",
-    location: "Kumarasamy Layout",
-    date: "2 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 10,
-    title: "Issue 10",
-    description: "Traffic congestion during peak hours.",
-    type: "Traffic",
-    from: "Vikram S",
-    location: "Nehru Stadium",
-    date: "1 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 11,
-    title: "Issue 11",
-    description: "Street dogs causing disturbance at night.",
-    type: "Animals",
-    from: "Sneha P",
-    location: "Ram Nagar",
-    date: "3 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 12,
-    title: "Issue 12",
-    description: "Graffiti and vandalism in public areas.",
-    type: "Vandalism",
-    from: "Rahul T",
-    location: "Chettipalayam",
-    date: "29 September 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 13,
-    title: "Issue 13",
-    description: "Need for more streetlights in dark areas.",
-    type: "Infrastructure",
-    from: "Priya N",
-    location: "Kalapatti",
-    date: "30 September 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 14,
-    title: "Issue 14",
-    description: "Issues with public transportation timings.",
-    type: "Transport",
-    from: "Karthik J",
-    location: "Town Hall",
-    date: "4 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-  {
-    id: 15,
-    title: "Issue 15",
-    description: "Excessive noise from construction sites.",
-    type: "Noise",
-    from: "Ananya R",
-    location: "Race Course",
-    date: "5 October 2024",
-    img_src:
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-  },
-];
-
+// Pagination Component
 function Pagination({ totalPages, currentPage, onPageChange }) {
-  // ... (your existing Pagination component code)
+  const buttonStyle = {
+    padding: "5px 10px",
+    margin: "0 5px",
+    borderRadius: "5px",
+    border: "1px solid #ccc",
+    backgroundColor: "#f0f0f0",
+    cursor: "pointer",
+    outline: "none",
+    fontSize: "16px",
+  };
+
+  const activeStyle = {
+    backgroundColor: "#007bff",
+    color: "#fff",
+    borderColor: "#007bff",
+  };
+
+  return (
+    <div className="pagination">
+      {Array.from({ length: totalPages }).map((_, index) => (
+        <button
+          style={
+            currentPage === index + 1
+              ? { ...buttonStyle, ...activeStyle }
+              : buttonStyle
+          }
+          key={index}
+          onClick={() => onPageChange(index + 1)}
+        >
+          {index + 1}
+        </button>
+      ))}
+    </div>
+  );
 }
 
-function handleCopy() {
-  console.log("copied");
-}
-
+// Image Component
 function Image({ issues }) {
   return (
     <img
@@ -198,6 +60,7 @@ function Image({ issues }) {
   );
 }
 
+// Single Issue Component
 function Issue({ issue }) {
   return (
     <div className="issue">
@@ -207,10 +70,12 @@ function Issue({ issue }) {
       <div className="issue-elements">
         <div className="line-onee">
           <span>ISSUE TYPE : {issue.IssueType}</span>
-          <button onClick={handleCopy}>COPY</button>
+          <button onClick={() => navigator.clipboard.writeText(issue._id)}>
+            COPY
+          </button>
         </div>
         <div className="line-twoo">
-          <span>ISSUE FROM : {issue._id}</span>
+          <span>ISSUE FROM : {issue.reportedBy}</span>
           <span className="date"> DATE OF ISSUE : {issue.createdAt}</span>
         </div>
         <div className="line-three">
@@ -221,41 +86,42 @@ function Issue({ issue }) {
   );
 }
 
+// Issue List Component
 function IssueList({ issues }) {
   if (issues.length === 0) {
     return (
       <div
         style={{
           textAlign: "center",
-          color: "rgba(57, 91, 100, 1)", // Your desired color
+          color: "rgba(57, 91, 100, 1)",
           fontSize: "18px",
           margin: "20px 0",
         }}
       >
         No issues found based on the filter criteria.
       </div>
-    ); // D
+    );
   }
+
   return (
     <div>
-      <section className="issue-list">
+      <ul className="issue-list">
         {issues.map((issue) => (
-          <li className="issue-item" key={issue.id}>
+          <li className="issue-item" key={issue._id}>
             <Issue issue={issue} />
           </li>
         ))}
-      </section>
+      </ul>
     </div>
   );
 }
 
-function Issues() {
+function EscalateIssues() {
   const [currentPage, setCurrentPage] = useState(1);
-  const [Data, setData] = useState([]);
-  const [filteredIssues, setFilteredIssues] = useState(issues);
-  const [filterVisible, setFilterVisible] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState(null); // State to track selected filter option
-  const [filter, setFilter] = useState({ location: "", date: "" });
+  const [Data, setData] = useState([]); // Holds all data fetched
+  const [filteredIssues, setFilteredIssues] = useState([]); // Holds filtered data
+  const [selectedFilter, setSelectedFilter] = useState(null); // Track filter
+  const [filter, setFilter] = useState({ location: "", date: "" }); // Filter state
   const issuesPerPage = 5;
   const totalPages = Math.ceil(filteredIssues.length / issuesPerPage);
   const currentIssues = filteredIssues.slice(
@@ -268,28 +134,28 @@ function Issues() {
     setFilter((prevFilter) => ({ ...prevFilter, [name]: value }));
   };
 
+  // Apply filter based on location and date
   const applyFilter = () => {
     const { location, date } = filter;
 
-    const filtered = issues.filter((issue) => {
+    const filtered = Data.filter((issue) => {
       return (
         (location === "" ||
-          issue.location.toLowerCase().includes(location.toLowerCase())) &&
-        (date === "" || issue.date.includes(date))
+          issue.IssueLocation.toLowerCase().includes(location.toLowerCase())) &&
+        (date === "" || issue.createdAt.includes(date))
       );
     });
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-
-    setFilteredIssues(filtered);
-    setCurrentPage(1);
+    setFilteredIssues(filtered); // Update filtered issues
+    setCurrentPage(1); // Reset to page 1 after applying filter
   };
-  const apicall = async () => {
+
+  // Fetch issues data from the API
+  const fetchIssues = async () => {
     const BASE_URL = "https://greenguard.onrender.com";
-    console.log(localStorage.getItem("authToken"));
     const token = localStorage.getItem("authToken");
-    const tokenWithoutQuotes = token.replace(/^"|"$/g, "");
-    console.log(tokenWithoutQuotes);
+    const tokenWithoutQuotes = token?.replace(/^"|"$/g, ""); // Clean token if exists
+
     try {
       const response = await axios.get(BASE_URL + "/issues/all", {
         headers: {
@@ -297,8 +163,10 @@ function Issues() {
           Authorization: `Bearer ${tokenWithoutQuotes}`,
         },
       });
-      console.log(response.data);
-      setData(response.data);
+
+      const issues = response.data;
+      setData(issues); // Store all issues data
+      setFilteredIssues(issues); // Initially, display all issues
     } catch (error) {
       console.log(error);
       window.alert("Error in fetching issues. Please try again later.");
@@ -306,8 +174,9 @@ function Issues() {
   };
 
   useEffect(() => {
-    apicall();
+    fetchIssues();
   }, []);
+
   const options = [
     { value: "location", label: "Search by Location" },
     { value: "date", label: "Search by Date" },
@@ -363,7 +232,7 @@ function Issues() {
       </div>
 
       <div className="content">
-        <IssueList issues={Data} />
+        <IssueList issues={currentIssues} />
         <Pagination
           totalPages={totalPages}
           currentPage={currentPage}
@@ -374,4 +243,4 @@ function Issues() {
   );
 }
 
-export default Issues;
+export default EscalateIssues;
