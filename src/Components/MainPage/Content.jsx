@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Content.css";
 
 export default function Content() {
-  // Setting initial state to 0
   const [numberOfIssues, setNumberOfIssues] = useState(0);
   const [numberOfIssuesSolved, setNumberOfIssuesSolved] = useState(0);
+  const navigate = useNavigate();
+  const handleNavigateToIssues = () => {
+    navigate("/issues");
+  };
+  const handleNavigateToEscalated = () => {
+    navigate("/escalated");
+  };
 
   return (
     <div className="container">
@@ -21,12 +28,12 @@ export default function Content() {
       </div>
 
       <div className="issue_report">
-        <div className="issue1">
+        <div className="issue1" onClick={handleNavigateToIssues}>
           <h1>ISSUES REPORTED</h1>
           <br />
           <h2>{numberOfIssues}</h2>
         </div>
-        <div className="issue2">
+        <div className="issue2" onClick={handleNavigateToEscalated}>
           <h1>ISSUES SOLVED</h1>
           <br />
           <h2>{numberOfIssuesSolved}</h2>

@@ -4,6 +4,8 @@ import NavBar from "../MainPage/NavBar";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import axios from "axios";
+import DatePicker from "react-datepicker"; // Import DatePicker
+import "react-datepicker/dist/react-datepicker.css"; // Import DatePicker styles
 
 // Pagination Component
 function Pagination({ totalPages, currentPage, onPageChange }) {
@@ -122,6 +124,8 @@ function EscalateIssues() {
   const [filteredIssues, setFilteredIssues] = useState([]); // Holds filtered data
   const [selectedFilter, setSelectedFilter] = useState(null); // Track filter
   const [filter, setFilter] = useState({ location: "", date: "" }); // Filter state
+  const [selectedDate, setSelectedDate] = useState(null); // Date state for DatePicker
+
   const issuesPerPage = 5;
   const totalPages = Math.ceil(filteredIssues.length / issuesPerPage);
   const currentIssues = filteredIssues.slice(
@@ -136,7 +140,12 @@ function EscalateIssues() {
 
   // Apply filter based on location and date
   const applyFilter = () => {
-    const { location, date } = filter;
+    const { location } = filter;
+    const date = selectedDate
+      ? `${selectedDate.getFullYear()}-${String(
+          selectedDate.getMonth() + 1
+        ).padStart(2, "0")}` // Format as YYYY-MM
+      : "";
 
     const filtered = Data.filter((issue) => {
       return (
@@ -188,50 +197,51 @@ function EscalateIssues() {
         <NavBar />
       </div>
 
-      <div className="filter-section">
-        <Dropdown
-          options={options}
-          onChange={(option) => {
-            setSelectedFilter(option);
-            setFilter({ location: "", date: "" }); // Reset filters when changing the dropdown
-          }}
-          placeholder="Select a filter"
-        />
-
-        {selectedFilter && (
-          <div className="filter-inputs">
-            {selectedFilter.value === "location" && (
-              <>
-                <input
-                  type="text"
-                  name="location"
-                  placeholder="Enter Location"
-                  value={filter.location}
-                  onChange={handleFilterChange}
-                  className="filter-input"
-                />
-              </>
-            )}
-            {selectedFilter.value === "date" && (
-              <>
-                <input
-                  type="text"
-                  name="date"
-                  placeholder="Enter Date (e.g., 2 October 2024)"
-                  value={filter.date}
-                  onChange={handleFilterChange}
-                  className="filter-input"
-                />
-              </>
-            )}
-            <button className="apply-filter-button" onClick={applyFilter}>
-              Apply Filter
-            </button>
-          </div>
-        )}
-      </div>
-
       <div className="content">
+        <div className="filter-section">
+          <Dropdown
+            options={options}
+            onChange={(option) => {
+              setSelectedFilter(option);
+              setFilter({ location: "", date: "" }); // Reset filters when changing the dropdown
+            }}
+            placeholder="Select a filter"
+          />
+
+          {selectedFilter && (
+            <div className="filter-inputs">
+              {selectedFilter.value === "location" && (
+                <>
+                  <input
+                    type="text"
+                    name="location"
+                    placeholder="Enter Location"
+                    value={filter.location}
+                    onChange={handleFilterChange}
+                    className="filter-input"
+                  />
+                </>
+              )}
+
+              {selectedFilter.value === "date" && (
+                <>
+                  <DatePicker
+                    selected={selectedDate}
+                    onChange={(date) => setSelectedDate(date)}
+                    dateFormat="MM/yyyy" // Only show month and year
+                    showMonthYearPicker // Enables month and year selection
+                    placeholderText="Select Month and Year"
+                    className="filter-input"
+                  />
+                </>
+              )}
+
+              <button className="apply-filter-button" onClick={applyFilter}>
+                Apply Filter
+              </button>
+            </div>
+          )}
+        </div>
         <IssueList issues={currentIssues} />
         <Pagination
           totalPages={totalPages}

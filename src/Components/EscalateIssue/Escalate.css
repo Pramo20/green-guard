@@ -1,190 +1,235 @@
 .issue-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    border-radius: 5px;
-    margin: 7px auto;
-    height: 90vh;
-    width: 97.5vw;
-  }
-  
-  .nav {
-    flex: 1; 
-    background-color: rgba(231, 246, 242, 0.8);
-    border-radius: 10px;
-    margin-top: 7px;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .content {
-    flex: 5; 
-    border-radius: 10px;
-    align-items: center;
-    background-color: rgba(231, 246, 242, 0.8);
-    justify-content: center;
-    overflow-y: scroll;
-    padding-right: 12px;
-  }
-  
-  .issue-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-radius: 25px;
-    padding-left: 12px;
-    padding-right: 12px;
-    
-    
-  }
-  .issue{
-    margin: 15px 20px;
-    border-radius: 25px;
-    background-color:rgba(165, 201, 202, 1);
-    border: 2.5px solid rgba(57, 91, 100, 1) ;
-    box-shadow: 2px 2px 3px rgba(57, 91, 100, 1);
-    min-width: 1380px;
-    min-height: 222px;
-  }
-  
-  
-  
-  .issue {
-    display: flex; 
-    position: relative;
-  }
-  
-  .image-box {
-    flex: 0 0 30%; 
-    margin-right: 10px; 
-    padding-left: 20px;
-  }
-  
-  .issue-elements {
-    
-    flex: 1;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 25px;
-    color: rgba(57, 91, 100, 1);
-    font-size: large;
-    padding-bottom: 10px;
-    
-  }
-  
-  .line-onee button{
-    position: absolute;
-    top: 0px;
-    right: 0;
-    padding: 15px 20px;
-    border-radius:  0 19px 0 25px ;
-    border: 2px  solid #395b64 ;
-    background-color: rgba(231, 246, 242);
-    font-size: large;
-    color: #395b64;
-    letter-spacing: 2px;
-    cursor: pointer;
-  }
-  .line-onee {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 20px;
-  
-  }
-  .line-twoo{
-    display: flex;
-    flex-direction: row;
-  
-    gap: 70px;
-    padding: 20px 0px;
-  }
-  
-  
-  .buttons{
-    display: flex;
-    gap: 8px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-  }
-  .buttons button{
-    padding: 15px 20px;
-    border: 3px  solid #395b64 ;
-    background-color: rgba(231, 246, 242 );
-    font-size: large;
-    color: #395b64;
-    letter-spacing: 2px;
-    cursor: pointer;
-  
-  }
-  .resolve-button{
-    border-radius:  0 0  20px 0 ;
-  
-  }
-  .spam-button{
-    border-radius:  25px 0 0 0 ;
-  }
-  .pagination {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-  }
-  .filter-section {
-    margin: 10px 0;
-    width: 30%;
-    text-align: center;
-  }
-  
-  .filter-toggle-button {
-    font-size: large;
-    background-color: rgba(231, 246, 242 );
-    color:  #395b64;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 15px;
-  }
-  
-  .filter-toggle-button:hover {
-    background-color: rgba(211, 226, 222, 1);
-  }
-  
-  .filter-inputs {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    /* margin-bottom: 0px; */
-    width: 100%;
-    position: relative;
-    top: -37px;
-    align-self: center;
-    justify-content: center;
-    left: 110%;
-  }
-  
-  .filter-input {
-    padding: 8px;
-    width: 200px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-  }
-  
-  .apply-filter-button {
-    padding: 8px 15px;
-    background-color: rgba(47, 81, 90, 1);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .apply-filter-button:hover {
-  border: solid rgba(47, 81, 90, 1);
-  }
-  
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  border-radius: 5px;
+  margin: 7px auto;
+  height: 90vh;
+  width: 97.5vw;
+}
+
+.nav {
+  flex: 1;
+  background-color: rgba(231, 246, 242, 0.8);
+  border-radius: 10px;
+  margin-top: 7px;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  flex: 5;
+  border-radius: 10px;
+  align-items: center;
+  background-color: rgba(231, 246, 242, 0.8);
+  justify-content: center;
+  overflow-y: scroll;
+  padding-right: 12px;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.issue-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 25px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.issue {
+  margin: 15px 20px;
+  border-radius: 25px;
+  background-color: rgba(165, 201, 202, 1);
+  border: 2.5px solid rgba(57, 91, 100, 1);
+  box-shadow: 2px 2px 3px rgba(57, 91, 100, 1);
+  min-width: 1380px;
+  min-height: 222px;
+  display: flex;
+  position: relative;
+}
+
+.image-box {
+  flex: 0 0 30%;
+  margin-right: 10px;
+  padding-left: 20px;
+}
+
+.issue-elements {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 25px;
+  color: rgba(57, 91, 100, 1);
+  font-size: large;
+  padding-bottom: 10px;
+}
+
+.line-onee button {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  padding: 15px 20px;
+  border-radius: 0 19px 0 25px;
+  border: 2px solid #395b64;
+  background-color: rgba(231, 246, 242);
+  font-size: large;
+  color: #395b64;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.line-onee {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.line-twoo {
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+  padding: 20px 0px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.buttons button {
+  padding: 15px 20px;
+  border: 3px solid #395b64;
+  background-color: rgba(231, 246, 242);
+  font-size: large;
+  color: #395b64;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.resolve-button {
+  border-radius: 0 0 20px 0;
+}
+
+.spam-button {
+  border-radius: 25px 0 0 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.filter-section {
+  margin: 10px 15px;
+  width: 30%;
+  text-align: center;
+}
+
+.filter-toggle-button {
+  font-size: large;
+  background-color: rgba(231, 246, 242);
+  color: #395b64;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.filter-toggle-button:hover {
+  background-color: rgba(211, 226, 222, 1);
+}
+
+.filter-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  position: relative;
+  top: -37px;
+  align-self: center;
+  justify-content: center;
+  left: 110%;
+}
+
+.filter-input {
+  padding: 8px;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.apply-filter-button {
+  padding: 8px 15px;
+  background-color: rgba(47, 81, 90, 1);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.apply-filter-button:hover {
+  background-color: rgba(37, 61, 70, 1);
+  transform: scale(1.05);
+  /* Scale effect on hover */
+}
+
+.apply-filter-button:active {
+  transform: scale(0.95);
+  /* Scale down effect on click */
+}
+
+/* Additional styles for date picker */
+.react-datepicker {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.react-datepicker__header {
+  background-color: rgba(47, 81, 90, 1);
+  color: white;
+}
+
+.react-datepicker__day {
+  border-radius: 5px;
+}
+
+.react-datepicker__day:hover {
+  background-color: rgba(231, 246, 242, 0.8);
+}
+
+.react-datepicker__day--selected {
+  background-color: rgba(47, 81, 90, 1);
+  color: white;
+}
+
+.clear-filter-button {
+  padding: 8px 15px;
+  background-color: rgba(200, 0, 0, 1);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clear-filter-button:hover {
+  background-color: rgba(180, 0, 0, 1);
+}
+
+.clear-filter-button:active {
+  transform: scale(0.95);
+  /* Scale down effect on click */
+}
